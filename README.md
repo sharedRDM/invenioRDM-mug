@@ -2,7 +2,11 @@
 
 invenioRDM deployment example for MUG
 
-## demo
+## Nginx
+
+Nginx example configuration can be found under [nginx](nginx).
+
+## Demo
 
 **update the environment variables.** [.env.temp](.env.temp)
 

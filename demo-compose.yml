@@ -52,16 +52,17 @@ services:
       - "9200:9200"
       - "9600:9600"
 
-  # frontend:
-  #   image: registry.gitlab.tugraz.at/qa/invenio/inveniordm:nginx
-  #   depends_on:
-  #     - web-ui
-  #     - web-api
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   volumes:
-  #     - static_data:/opt/invenio/var/instance/static
+  frontend:
+    build: ./nginx/
+    image: instance-frontend
+    depends_on:
+      - web-ui
+      - web-api
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - static_data:/opt/invenio/var/instance/static
 
   web-ui:
     command: ["uwsgi /opt/invenio/var/instance/uwsgi_ui.ini"]
@@ -76,8 +77,8 @@ services:
       - static_data:/opt/invenio/var/instance/static
       - uploaded_data:/opt/invenio/var/instance/data
       - archived_data:/opt/invenio/var/instance/archive
-    ports:
-      - "5000:5000"
+    # ports:
+    #   - "5000:5000"
 
   web-api:
     command: ["uwsgi /opt/invenio/var/instance/uwsgi_rest.ini"]
@@ -91,8 +92,8 @@ services:
     volumes:
       - uploaded_data:/opt/invenio/var/instance/data
       - archived_data:/opt/invenio/var/instance/archive
-    ports:
-      - "5000:5000"
+    # ports:
+    #   - "5000:5000"
 
   worker:
     command: ["celery -A invenio_app.celery worker --beat --events --loglevel=INFO"]
