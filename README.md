@@ -14,6 +14,11 @@ Nginx example configuration can be found under [nginx](nginx).
 docker compose -f demo-compose.yml up -d
 ```
 
+Once running, visit https://127.0.0.1 in your browser.
+
+**Note**: The server is using a self-signed SSL certificate, so your browser
+will issue a warning that you will have to by-pass.
+
 ## Initialization
 
 To set up your database, indexes, and related components, follow these steps.  
