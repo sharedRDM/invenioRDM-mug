@@ -57,4 +57,14 @@ To set up your database, indexes, and related components, follow these steps.
 
     # Initialize indexes
     invenio index init --force
+   
+    # fixtures data
+    invenio rdm-records fixtures
+    ```
+
+3. (Optional) add demo data:
+
+    ```bash
+    # demo data
+    invenio rdm-records demo
     ```
