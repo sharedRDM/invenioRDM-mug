@@ -68,3 +68,17 @@ To set up your database, indexes, and related components, follow these steps.
     # demo data
     invenio rdm-records demo
     ```
+4. (Optional) create users:
+
+    ```bash
+    # create a users with cli
+    invenio users create user01@inveniordm.example.com --password <YOURPASSWORD> --active --confirm
+    
+    invenio users create admin@inveniordm.example.com --password <YOURPASSWORD> --active --confirm
+
+    # give a user admin role
+    invenio roles add admin@inveniordm.example.com admin
+    ```
+
+
+
