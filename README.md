@@ -80,5 +80,12 @@ To set up your database, indexes, and related components, follow these steps.
     invenio roles add admin@inveniordm.example.com admin
     ```
 
+## MUG
 
+For this deployment, we have set up a new NGINX container without SSL enabled, which acts as a reverse proxy for both the UI and API containers. **MUG** should use port `8000` of this container to route requests through its own proxy server.
 
+**update the environment variables.** [.env.temp](.env.temp)
+
+```bash
+docker compose -f mug-compose.yml up -d
+```
