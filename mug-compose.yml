@@ -54,6 +54,10 @@ services:
 
   frontend:
     image: ghcr.io/sharedrdm/inveniordm-mug:main-nginx
+    # # uncomment if want to build localy.
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile-nginx-mug
     depends_on:
       - web-ui
       - web-api
