@@ -79,6 +79,10 @@ To set up your database, indexes, and related components, follow these steps.
     # give a user admin role
     invenio roles add admin@inveniordm.example.com admin
     ```
+5. (Optional) rebuild indexes for rdm (reserach results)
+   ```bash
+   invenio rdm rebuild-all-indices
+   ```
 
 ## MUG
 
@@ -89,3 +93,4 @@ For this deployment, we have set up a new NGINX container without SSL enabled, w
 ```bash
 docker compose -f mug-compose.yml up -d
 ```
+
