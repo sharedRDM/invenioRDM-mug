@@ -50,7 +50,7 @@ To set up your database, indexes, and related components, follow these steps.
     invenio files location create --default 'default-location' /opt/invenio/var/instance/data
 
     # Create an admin role
-    invenio roles create admin
+    invenio roles create administration
 
     # Grant superuser access to the admin role
     invenio access allow superuser-access role admin
