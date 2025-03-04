@@ -49,11 +49,11 @@ To set up your database, indexes, and related components, follow these steps.
     # Set up the default file storage location
     invenio files location create --default 'default-location' /opt/invenio/var/instance/data
 
-    # Create an admin role
-    invenio roles create administration
+    # Create an administrator role
+    invenio roles create administrator
 
-    # Grant superuser access to the admin role
-    invenio access allow superuser-access role admin
+    # Grant superuser access to the administrator role
+    invenio access allow superuser-access role administrator
 
     # Initialize indexes
     invenio index init --force
@@ -77,7 +77,7 @@ To set up your database, indexes, and related components, follow these steps.
     invenio users create admin@inveniordm.example.com --password <YOURPASSWORD> --active --confirm
 
     # give a user admin role
-    invenio roles add admin@inveniordm.example.com admin
+    invenio roles add admin@inveniordm.example.com administrator
     ```
 5. (Optional) rebuild indexes for rdm (reserach results)
    ```bash
