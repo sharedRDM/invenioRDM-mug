@@ -94,3 +94,47 @@ For this deployment, we have set up a new NGINX container without SSL enabled, w
 docker compose -f mug-compose.yml up -d
 ```
 
+
+### Keycloak
+Adding SSO with OpenID Connect (OIDC)
+
+```bash
+from invenio_oauthclient.contrib.keycloak import KeycloakSettingsHelper
+
+_keycloak_helper = KeycloakSettingsHelper(
+    title="Meduni SSO",
+    description="Meduni SSO",
+    base_url="https://openid.medunigraz.at/",
+    realm="invenioRDM",
+    app_key="KEYCLOAK_APP_CREDENTIALS",
+    legacy_url_path=False  # Remove "/auth/" between the base URL and realm names for generated Keycloak URLs (default: True, for Keycloak up to v17)
+)
+
+OAUTHCLIENT_KEYCLOAK_REALM_URL = _keycloak_helper.realm_url
+OAUTHCLIENT_KEYCLOAK_USER_INFO_URL = _keycloak_helper.user_info_url
+OAUTHCLIENT_KEYCLOAK_VERIFY_EXP = True  # whether to verify the expiration date of tokens
+OAUTHCLIENT_KEYCLOAK_VERIFY_AUD = True  # whether to verify the audience tag for tokens
+OAUTHCLIENT_KEYCLOAK_AUD = "inveniordm"  # probably the same as the client ID
+OAUTHCLIENT_KEYCLOAK_USER_INFO_FROM_ENDPOINT = True  # get user info from keycloak endpoint
+
+OAUTHCLIENT_REMOTE_APPS = {"keycloak": _keycloak_helper.remote_app}
+
+## SET THE CREDENTIALS via .env
+# INVENIO_KEYCLOAK_APP_CREDENTIALS={'consumer_key':'<YOUR.CLIENT.ID>','consumer_secret': '<YOUR.CLIENT.CREDENTIALS.SECRET>'}
+```
+---
+
+### Debugging
+
+**If you want to see defined configs**
+```bash
+# exec UI container
+docker exec -it UI_CONTAINER bash
+
+# open invenio shell
+invenio shell
+
+# print config
+print(app.config["OAUTHCLIENT_KEYCLOAK_USER_INFO_URL"])
+```
+
