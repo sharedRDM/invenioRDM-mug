@@ -8,11 +8,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - Dockerfile-nginx-mug
+      - nginx.conf
+      - conf-mug.d/**
   workflow_dispatch:
 
 jobs:
-
-
   build-nginx-mug:
     runs-on: ubuntu-22.04
     permissions:
