@@ -8,7 +8,21 @@ Nginx example configuration can be found under [nginx](nginx).
 
 ## Demo
 
-**update the environment variables.** [.env.temp](.env.temp)
+**First update the environment variables.** [.env.temp](.env.temp)
+
+### Initialization
+
+### 1. Fast way of starting demo instance:
+
+```bash
+./start-demo-app.sh
+```
+
+Running this will actually run all the steps mentioned below in this documentation. For optional steps, just add them as arguments to the scripts. Run ```./start-demo-app.sh help``` for more details.
+
+**Note**: There might be a need to change the permission for the script. Just run ```chmod 744 start-demo-app.sh```.
+
+### 2. Step by step initialize the docker instance:
 
 ```bash
 docker compose -f demo-compose.yml up -d
@@ -19,10 +33,18 @@ Once running, visit https://127.0.0.1 in your browser.
 **Note**: The server is using a self-signed SSL certificate, so your browser
 will issue a warning that you will have to by-pass.
 
-## Initialization
+**Note**: This might not work just by running docker-compose. You might need to run the following steps in order for the application to show up in the browser.
 
 To set up your database, indexes, and related components, follow these steps.  
 **Note:** These commands should only be run during the initial setup. Running them multiple times may result in data loss.
+
+**The following set of commands to start/restart the instance can be run directly with:**
+```bash
+docker cp ./wipe_recreate.sh <UI-COINTAINER>:/wipe_recreate.sh
+docker exec <UI-COINTAINER> /wipe_recreate.sh
+```
+
+Step by step:
 
 1. Access the container's shell:
    ```bash
@@ -103,6 +125,13 @@ To have publications available, there is a need to have a few more things config
         },
     }
     ```
+
+**The following set of commands to initialize publications can be run directly with:**
+```bash
+docker cp ./setup_publications.sh <UI-CONTAINER>:/setup_publications.sh
+docker exec <UI-CONTAINER> /setup_publications.sh
+```
+
 2. Add Publication (marc21) roles.
 
     ```bash
