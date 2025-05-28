@@ -8,7 +8,7 @@ Nginx example configuration can be found under [nginx](nginx).
 
 ## Demo
 
-**First update the environment variables.** [.env.temp](.env.temp)
+**First update the environment variables.** [.env](.env)
 
 ## Initialization
 
@@ -165,7 +165,7 @@ docker exec <UI-CONTAINER> /setup_publications.sh
 
 For this deployment, we have set up a new NGINX container without SSL enabled, which acts as a reverse proxy for both the UI and API containers. **MUG** should use port `8000` of this container to route requests through its own proxy server.
 
-**update the environment variables.** [.env.temp](.env.temp)
+**update the environment variables.** [.env](.env)
 
 ```bash
 docker compose -f mug-compose.yml up -d

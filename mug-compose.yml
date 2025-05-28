@@ -71,9 +71,9 @@ services:
   web-ui:
     command: ["uwsgi /opt/invenio/var/instance/uwsgi_ui.ini"]
     pull_policy: always
-    image: ghcr.io/sharedrdm/instance:main-mug
+    image: ghcr.io/sharedrdm/instance:${RELEASE_TAG}
     restart: "unless-stopped"
-    env_file: .env.temp
+    env_file: .env
     depends_on:
       - search
       - cache
@@ -89,8 +89,8 @@ services:
     command: ["uwsgi /opt/invenio/var/instance/uwsgi_rest.ini"]
     pull_policy: always
     restart: "unless-stopped"
-    image: ghcr.io/sharedrdm/instance:main-mug
-    env_file: .env.temp
+    image: ghcr.io/sharedrdm/instance:${RELEASE_TAG}
+    env_file: .env
     depends_on:
       - search
       - cache
@@ -103,10 +103,10 @@ services:
 
   worker:
     command: ["celery -A invenio_app.celery worker --beat --events --loglevel=INFO"]
-    image: ghcr.io/sharedrdm/instance:main-mug
+    image: ghcr.io/sharedrdm/instance:${RELEASE_TAG}
     restart: "unless-stopped"
     pull_policy: always
-    env_file: .env.temp
+    env_file: .env
     depends_on:
       - search
       - cache
