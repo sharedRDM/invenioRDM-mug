@@ -155,5 +155,13 @@ print(app.config["OAUTHCLIENT_KEYCLOAK_USER_INFO_URL"])
 ### Features
 
 ### <del> [Publications](./Publications.md) </del>
+
+---
+
 ### [Global Search](./globalsearch.md)
+
+---
+
 ### [Curations](./curations.md)
+
+---
