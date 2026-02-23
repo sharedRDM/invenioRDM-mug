@@ -9,8 +9,8 @@ Initial steps to integrate **Global Search** into your project.
 Run the following commands in your terminal:
 
 ```bash
-invenio db create
 invenio alembic upgrade
+invenio db create
 invenio global-search rebuild-database
 ```
 
