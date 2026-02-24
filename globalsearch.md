@@ -14,6 +14,22 @@ invenio db create
 invenio global-search rebuild-database
 ```
 
+**Debugging**
+
+If you want to make sure global-search is setup correctly, you should connect to the database and check for `global_search_metadata` table.
+
+If you encounter problems with `alembic upgrade` command, try:
+
+```sql
+delete from alembic_version where version_num=<problematic_version>;
+```
+
+then run again `invenio alembic upgrade`. If you remove packages that ran alembic scripts in the past and don't cleanup this table, this can lead to errors.
+
+If you detect problems with the gs-index, try running:
+
+`invenio global-search rebuild-database` 
+
 
 ## 📚 Documentation
 
