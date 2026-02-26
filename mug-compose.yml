@@ -120,5 +120,10 @@ volumes:
   rabbitmq_data:
   static_data: 
   uploaded_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage # make sure to create /storage directory and docker has permission to rw
   os_data:
   archived_data:
