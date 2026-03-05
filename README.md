@@ -138,6 +138,35 @@ OAUTHCLIENT_REMOTE_APPS = {"keycloak": _keycloak_helper.remote_app}
 ```
 ---
 
+### Mail Configuration
+
+To enable email sending -e.g., for notifications, curation requests, configure the following environment variables in your `.env` file:
+
+```bash
+# Disable mail suppression - set to False to actually send emails
+INVENIO_MAIL_SUPPRESS_SEND=False
+
+# SMTP server hostname
+INVENIO_MAIL_SERVER=smtp.example.com
+
+# Default sender email address
+INVENIO_MAIL_DEFAULT_SENDER=noreply@example.com
+
+# Security email sender - used for account-related emails
+INVENIO_SECURITY_EMAIL_SENDER=noreply@example.com
+```
+
+To verify the mail configuration is loaded correctly:
+
+```bash
+docker exec -it UI_CONTAINER bash
+invenio shell
+print(app.config["MAIL_SERVER"])
+print(app.config["MAIL_SUPPRESS_SEND"])
+```
+
+---
+
 ### Debugging
 
 **If you want to see defined configs**
