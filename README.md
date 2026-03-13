@@ -88,8 +88,8 @@ Step by step:
     
     invenio users create admin@inveniordm.example.com --password <YOURPASSWORD> --active --confirm
 
-    # give a user admin role
-    invenio roles add admin@inveniordm.example.com administrator
+    # give a user administration role
+    invenio roles add admin@inveniordm.example.com administration
     ```
 5. (Optional) rebuild indexes for rdm (reserach results)
    ```bash
