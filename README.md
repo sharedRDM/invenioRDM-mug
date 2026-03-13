@@ -61,11 +61,11 @@ Step by step:
     # Set up the default file storage location
     invenio files location create --default 'default-location' /opt/invenio/var/instance/data
 
-    # Create an administrator role
-    invenio roles create administrator
+    # Create an administration role
+    invenio roles create administration
 
-    # Grant superuser access to the administrator role
-    invenio access allow superuser-access role administrator
+    # Grant superuser access to the administration role
+    invenio access allow superuser-access role administration
 
     # Initialize indexes
     invenio index init --force
