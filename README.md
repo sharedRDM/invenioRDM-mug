@@ -61,6 +61,10 @@ Step by step:
     # Set up the default file storage location
     invenio files location create --default 'default-location' /opt/invenio/var/instance/data
 
+    # Create an admin role: required by fixtures
+    # TODO: remove once bug is fixed
+    invenio roles create admin
+    
     # Create an administration role
     invenio roles create administration
 
