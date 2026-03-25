@@ -83,7 +83,13 @@ Step by step:
     ```bash
     # demo data
     invenio rdm-records demo
+
+    # if your instance has invenio-curations installed, the demo records can
+    # be submitted only using a user with a role from the config CURATIONS_PRIVILEGED_ROLES
+    # (e.g. admins)
+    invenio rdm-records demo records -u admin@example.com
     ```
+
 4. (Optional) create users:
 
     ```bash
